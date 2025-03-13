@@ -1,4 +1,4 @@
-# [vx.x.x] - [Unreleased]
+# [v1.0.0] - [2024-03-13]
 
 ## feature
 - Added confirmation dialog when deleting a task.
