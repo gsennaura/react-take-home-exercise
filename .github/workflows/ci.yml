@@ -1,13 +1,14 @@
-name: Continuous Deployment
+name: Continuous Integration
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
 jobs:
-  deploy:
+  test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
@@ -27,11 +28,5 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Project
-        run: pnpm build
-
-      - name: Deploy to Vercel
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}  
-        run: npx vercel --prod --yes --token $VERCEL_TOKEN
-
+      - name: Run Tests
+        run: pnpm test
